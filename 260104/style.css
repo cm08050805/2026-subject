@@ -48,6 +48,47 @@ aside {
     font-size: 20px;
 }
 
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+header > .search {
+    width: 200px;
+    height: 40px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+header > .search > img {
+    width: 25px;
+    height: 25px;
+}
+header > .search > input {
+    width: 80%;
+    height: 100%;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.add-bookmark {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #214747;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.add-bookmark > img {
+    width: 20px;
+    height: 20px;
+}
+
+
 main {
     width: 100%;
     padding-left: 300px;
