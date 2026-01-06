@@ -60,9 +60,39 @@ aside {
     justify-content: start;
     gap: 6px;
 }
-.menu > img {
+
+.menu-icon {
+    position: relative;
     width: 25px;
     height: 25px;
+}
+
+.menu-icon img {
+    position: absolute;
+    inset: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.icon-active {
+    opacity: 0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .menu {
+    color: black;
+    background-color: #E7EFF1;
+}
+
+input[type="radio"]:checked + .menu .icon-default {
+    opacity: 0;
+}
+
+input[type="radio"]:checked + .menu .icon-active {
+    opacity: 1;
 }
 
 .tags > span {

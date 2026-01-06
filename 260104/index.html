@@ -15,14 +15,26 @@
             <div class="title">Bookmark Manager</div>
         </div>
         <div class="menus aside">
-            <div class="menu">
-                <img src="./imgs/home_icon.png" alt="home_icon">
-                <span>Home</span>
-            </div>
-            <div class="menu">
-                <img src="./imgs/box_icon.png" alt="box_icon">
-                <span>Archived</span>
-            </div>
+            <label for="home">
+                <input type="radio" name="menu" id="home" checked>
+                <div class="menu">
+                    <div class="menu-icon">
+                        <img class="icon-default" src="./imgs/home_icon.png" alt="home_icon">
+                        <img class="icon-active" src="./imgs/home_icon_checked.png" alt="home_icon_checked">
+                    </div>
+                    <span>Home</span>
+                </div>
+            </label>
+            <label for="box">    
+                <input type="radio" name="menu" id="box">
+                <div class="menu">
+                    <div class="menu-icon">
+                        <img class="icon-default" src="./imgs/box_icon.png" alt="box_icon">
+                        <img class="icon-active" src="./imgs/box_icon_checked.png" alt="box_icon_checked">
+                    </div>
+                    <span>Archived</span>
+                </div>
+            </label>
         </div>
         <div class="tags aside">
             <span>TAGS</span>
