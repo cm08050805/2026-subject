@@ -48,8 +48,7 @@ aside {
     font-size: 20px;
 }
 
-.menus,
-.tags {
+.menus, .tags {
     color: #616060FF;
 }
 
@@ -98,6 +97,10 @@ input[type="radio"]:checked+.menu .icon-active {
     opacity: 1;
 }
 
+.tags {
+    height: 600px;
+    overflow-y: scroll;
+}
 .tags>span {
     font-size: 12px;
     font-weight: bold;
