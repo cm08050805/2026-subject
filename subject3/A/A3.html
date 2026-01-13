@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: #fff;
+        transition: background-color 0.5s;
+    }
+    
+    .toggleCheckbox {
+        display: none;
+    }
+
+    #togglebtn {
+        width: 200px;
+        height: 100px;
+        background-color: #f0f0f0;
+        color: white;
+        transition: all 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body:has(.toggleCheckbox:checked) {
+        background-color: #222;
+    }
+
+    .toggleCheckbox:checked ~ #togglebtn {
+        color: yellow;
+        background-color: #0a0a5c;
+    }
+
+    </style>
+</head>
+<body>
+    <label for="toggle" class="toggleLabel">
+        <input type="checkbox" id="toggle" class="toggleCheckbox">
+        <div id="togglebtn">toggle</div>
+    </label>
+</body>
+</html>

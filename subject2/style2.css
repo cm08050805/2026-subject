@@ -344,6 +344,7 @@ section>span {
 .modal-order-btn {
     width: 100%;
     padding: 16px 0;
+    color: white;
     background-color: #C83B0E;
     border-radius: 50px;
     display: flex;
