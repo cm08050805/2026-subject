@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1000px;
+            margin: auto;
+            padding: 50px;
+            background-color: rgb(185, 185, 185);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item-list {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 30px;
+        }
+
+        .item {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item > span:nth-child(1) {
+            font-size: 50px;
+        }
+        .item > span:nth-child(2) {
+            font-weight: bold;
+        }
+        .item > span:nth-child(3) {
+            color: gray;
+            font-size: 14px;
+        }
+        .item > span:nth-child(4) {
+            padding: 5px 20px;
+            color: #fff;
+            border-radius: 20px;
+            background-color: rgb(66, 132, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>우리의 서비스</h1>
+        <div class="item-list">
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+            <div class="item">
+                <span>🏆</span>
+                <span>기능경기대회</span>
+                <span>국내외 기능경기대회를 통해 기능인재를 발굴하고 우수한 기능의 가치를 널리 알리고 있습니다.</span>
+                <span>자세히 보기</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

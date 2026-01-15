@@ -5,41 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    body {
-        background-color: #fff;
-        transition: background-color 0.5s;
-    }
-    
-    .toggleCheckbox {
-        display: none;
-    }
+        body {
+            background-color: #fff;
+            transition: background-color 0.5s;
+        }
+        
+        .toggleCheckbox {
+            display: none;
+        }
 
-    #togglebtn {
-        width: 200px;
-        height: 100px;
-        background-color: #f0f0f0;
-        color: white;
-        transition: all 0.5s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        #togglebtn {
+            width: 200px;
+            height: 100px;
+            position: relative;
+            border-radius: 50px;
+            background-color: #f0f0f0;
+            transition: all 0.5s;
+        }
 
-    body:has(.toggleCheckbox:checked) {
-        background-color: #222;
-    }
+        #toggleicon {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            border-radius: 50px;
+            background-color: white;
+            transition: all 0.5s;
+        }
 
-    .toggleCheckbox:checked ~ #togglebtn {
-        color: yellow;
-        background-color: #0a0a5c;
-    }
+        body:has(.toggleCheckbox:checked) {
+            background-color: #222;
+        }
 
+        .toggleCheckbox:checked ~ #togglebtn {
+            background-color: #0a0a5c;
+        }
+
+        .toggleCheckbox:checked ~ #togglebtn > #toggleicon {
+            background-color: yellow;
+            left: 100px;
+        }
     </style>
 </head>
 <body>
     <label for="toggle" class="toggleLabel">
         <input type="checkbox" id="toggle" class="toggleCheckbox">
-        <div id="togglebtn">toggle</div>
+        <div id="togglebtn">
+            <div id="toggleicon"></div>
+        </div>
     </label>
 </body>
 </html>

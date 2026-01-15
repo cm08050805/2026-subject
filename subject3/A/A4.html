@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        form {
+            width: 200px;
+            height: 350px;
+            margin: auto;
+            padding: 0 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        form > input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .signup {
+            width: 100%;
+            margin-top: 50px;
+            padding: 10px 5px;
+            color: #fff ;
+            border-radius: 5px;
+            background-color: plum;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .signup:hover {
+            color: black;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="이름 입력" required>
+        <input type="text" placeholder="이메일 입력" required>
+        <input type="password" placeholder="비밀번호 입력" required>
+        <input type="password" placeholder="비밀번호 확인" required>
+        <button type="submit" class="signup">회원가입</button>    
+    </form>
+</body>
+</html>
