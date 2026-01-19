@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+input {
+    display: none;
+}
+
+.slider-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("imgs/background.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+    gap: 120px;
+}
+
+.picture-area {
+    width: 300vw;
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.picture-slide {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 80px;
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.picture img {
+    width: 320px;
+    height: auto;
+}
+
+.desc {
+    color: #fff;
+}
+
+.desc > div:nth-child(1) {
+    font-size: 20px;
+}
+
+.desc > div:nth-child(3) {
+    font-size: 14px;
+    color: gray;
+}
+
+.btn-area {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-slide {
+    display: none;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: #e2e2e2;
+}
+
+#s1:checked ~ .slider-wrapper .picture-area {
+    transform: translateX(100vw);
+}
+
+#s2:checked ~ .slider-wrapper .picture-area {
+    transform: translateX(0);
+}
+
+#s3:checked ~ .slider-wrapper .picture-area {
+    transform: translateX(-100vw);
+}
+
+#s1:checked ~ .slider-wrapper .btn-area .slide1,
+#s2:checked ~ .slider-wrapper .btn-area .slide2,
+#s3:checked ~ .slider-wrapper .btn-area .slide3 {
+    display: flex;
+}
+</style>
+</head>
+<body>
+
+<input type="radio" name="slide" id="s1" checked>
+<input type="radio" name="slide" id="s2">
+<input type="radio" name="slide" id="s3">
+
+<div class="slider-wrapper">
+
+    <div class="picture-area">
+        <div class="picture-slide slide1">
+            <div class="picture">
+                <img src="./imgs/1.jpg">
+                <div class="desc">
+                    <div>삼나무와 초록 밀밭</div>
+                    <div><i>Cypresses and Green Wheat Field</i></div>
+                    <div>Vincent van Gogh, 1889</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/2.jpg">
+                <div class="desc">
+                    <div>모델과 화가</div>
+                    <div><i>The Painter and His Model</i></div>
+                    <div>Pablo Picasso, 1928</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/3.jpg">
+                <div class="desc">
+                    <div>작은 거리</div>
+                    <div><i>The Little Street</i></div>
+                    <div>Johannes Vermeer, 1657–1658</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="picture-slide slide2">
+            <div class="picture">
+                <img src="./imgs/4.jpg">
+                <div class="desc">
+                    <div>빈도 알토비티의 초상</div>
+                    <div><i>Portrait of Bindo Altoviti</i></div>
+                    <div>Raphael, 1515</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/5.jpg">
+                <div class="desc">
+                    <div>나르시스의 변형</div>
+                    <div><i>The Metamorphosis of Narcissus</i></div>
+                    <div>Salvador Dalí, 1937</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/6.jpg">
+                <div class="desc">
+                    <div>베노아의 성모</div>
+                    <div><i>The Benois Madonna</i></div>
+                    <div>Leonardo da Vinci, 1478–1480</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="picture-slide slide3">
+            <div class="picture">
+                <img src="./imgs/7.jpg">
+                <div class="desc">
+                    <div>과일 바구니를 든 소년</div>
+                    <div><i>Boy with a Basket of Fruit</i></div>
+                    <div>Caravaggio, 1593–1594</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/8.jpg">
+                <div class="desc">
+                    <div>들쥐</div>
+                    <div><i>Young Hare</i></div>
+                    <div>Albrecht Dürer, 1502</div>
+                </div>
+            </div>
+            <div class="picture">
+                <img src="./imgs/9.jpg">
+                <div class="desc">
+                    <div>톨레도 풍경</div>
+                    <div><i>View of Toledo</i></div>
+                    <div>El Greco, 1596–1600</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-area">
+        <div class="btn-slide slide1">
+            <label class="btn" for="s1">&lt;</label>
+            <label class="btn" for="s2">&gt;</label>
+        </div>
+        <div class="btn-slide slide2">
+            <label class="btn" for="s1">&lt;</label>
+            <label class="btn" for="s3">&gt;</label>
+        </div>
+        <div class="btn-slide slide3">
+            <label class="btn" for="s2">&lt;</label>
+            <label class="btn" for="s3">&gt;</label>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
