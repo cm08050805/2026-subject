@@ -4,8 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 160px);
+            justify-content: center;
+        }
+
+        .step1, .step2, .step3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step1 .step-icon {
+            color: #fff;
+            background-color: #10B981;
+        }
+
+        .step2 .step-icon {
+            color: #fff;
+            background-color: #3B82F6;
+            border: 5px solid #a9caff;
+            border-radius: 50px;
+        }
+
+        .step3 .step-icon {
+            color: #9CA3AF;
+            background-color: rgb(200, 200, 200);
+        }
+
+        .step-main {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 4px;
+        }
+
+        .step-main > span:nth-child(1) {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        .step-main > span:nth-child(2) {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .step-main > span:nth-child(3) {
+            font-size: 14px;
+        }
+
+        .step1 .step-main > span:nth-child(3) {
+            color: #10B981;
+        }
+
+        .step2 .step-main > span:nth-child(3) {
+            color: #3B82F6;
+        }
+
+        .step3 .step-main > span:nth-child(3) {
+            color: #9CA3AF;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="step1">
+            <div class="step-icon">&checkmark;</div>
+        </div>
+        <div class="step2">
+            <div class="step-icon">2</div>
+        </div>
+        <div class="step3">
+            <div class="step-icon">3</div>
+        </div>
+
+        <div class="step1">
+            <div class="step-main">
+                <span>STEP 1</span>
+                <span>Card Details</span>
+                <span>Completed</span>
+            </div>
+        </div>
+        <div class="step2">
+            <div class="step-main">
+                <span>STEP 2</span>
+                <span>Form Review</span>
+                <span>In Progress</span>
+            </div>
+        </div>
+        <div class="step3">
+            <div class="step-main">
+                <span>STEP 3</span>
+                <span>Authentication</span>
+                <span>Pending</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
