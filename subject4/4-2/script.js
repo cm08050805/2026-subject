@@ -1,4 +1,4 @@
-// 1
+// 1 완
 function mergeObjects(obj1, obj2) {
     return {...obj1, ...obj2}
 }
@@ -22,42 +22,30 @@ const str = "apple";
 
 console.log(countLetters(str)); // {a: 1, p: 2, l: 1, e: 1} 출력
 
-// 3
+// 3 수
 function getObjectKeysAndValues(object) {
-    const resultArr = [[], []];
-	for (const [k, v] of Object.entries(object)) {
-        resultArr[0].push(k);
-        resultArr[1].push(v);
-    }
-
-    return resultArr;
+    return [Object.keys(object), Object.values(object)]
 }
 
 const obj = { a: "A", b: "B", c: "C" };
 
 console.log(getObjectKeysAndValues(obj)); // [['a', 'b', 'c'], ['A', 'B', 'C']] 출력
 
-// 4
+// 4 수
 function removeKeyFromObject(object, keys) {
-	for (e of keys) {
-        delete object[e];
-    }
-
-    return object
+		return Object.entries(object).reduce((acc, [k, v]) => {
+			if (!keys.includes(k)) acc[k] = v;
+			return acc;
+		}, {});
 }
 
 const obj2 = {a: "hi", b: "there", c: "world"};
 
 console.log(removeKeyFromObject(obj2, ['b', 'c'])); // {a: "hi"} 출력
 
-// 5
+// 5 수
 function selectValuesByKey(objectArray, key) {
-	const resultArr = [];
-    for (e of objectArray) {
-        resultArr.push(e[key]);
-    }
-
-    return resultArr;
+    return objectArray.map(e => e[key]);
 }
 
 const objectArray = [
@@ -69,7 +57,7 @@ const objectArray = [
 console.log(selectValuesByKey(objectArray, "name"));
 // ["Alice", "Bob", "Cathy"] 출력
 
-// 6
+// 6 완
 function filterByScore(students, score) {
 	return students.filter(e => e.score >= score).map(e => e.name);
 }
@@ -83,7 +71,7 @@ const students = [
 
 console.log(filterByScore(students, 80)); // ["Alice", "Cathy"] 출력
 
-// 7
+// 7 완
 function filterByAverageScore(students, score) {
 	return students.filter(e => (e.score.reduce((sum, v) => {return sum + v}, 0) / e.score.length) >= score).map(e => e.name);
 }
@@ -97,7 +85,7 @@ const students2 = [
 
 console.log(filterByAverageScore(students2, 80)); // ["Alice", "David"] 출력
 
-// 8
+// 8 완
 function getBooksByCategory(books, category) {
 	return books.filter(e => e.category === category).map(e => e.title);
 }
@@ -112,10 +100,10 @@ const books = [
 console.log(getBooksByCategory(books, "programming")); 
 // ["JavaScript for Beginners", "Python Crash Course"] 출력
 
-// 9
+// 9 수
 function getBooksStatsByCategory(books, category) {
 	const categoryBooks = books.filter(e => e.category === category);
-    return {titles: `${categoryBooks.map(e => e.title)}`, avgPages: `${(categoryBooks.reduce((sum, e) => {return sum + e.pages}, 0)/categoryBooks.length).toFixed(3)}`}
+    return {titles: [...categoryBooks.map(e => e.title)], avgPages: `${(categoryBooks.reduce((sum, e) => {return sum + e.pages}, 0)/categoryBooks.length).toFixed(3)}`}
 }
 
 const books2 = [
@@ -132,7 +120,7 @@ console.log(getBooksStatsByCategory(books2, "programming"));
 console.log(getBooksStatsByCategory(books2, "novel"));
 // { titles: ["The Hobbit", "Harry Potter", "Crime and Punishment"], avgPages: 413.333 } 출력
 
-// 10
+// 10 수
 const defaultFilterOptions = {
 	minPages: 0, 
   maxPages: Infinity, 
@@ -143,9 +131,15 @@ const defaultFilterOptions = {
 
 function searchBooks(books, options = defaultFilterOptions) {
 	const newObj = {};
+	let isPagesValid;
+	let isPriceValid;
+	let isCategoryValid;
     for (e of Object.values(books)) {
-        if ((e.pages >= options.minPages && e.pages <= options.maxPages) && (e.price >= options.minPrice && e.price <= options.maxPrice)) {
-            if (options.category && options.category !== e.category) continue;
+		isPagesValid = e.pages >= options.minPages && e.pages <= options.maxPages;
+		isPriceValid = e.price >= options.minPrice && e.price <= options.maxPrice;
+		isCategoryValid = options.category && e.category !== options.category;
+        if (isPagesValid && isPriceValid) {
+            if (isCategoryValid) continue;
             newObj[e.category] = {
                 titles: [...(newObj[e.category]?.titles ?? []), e.title],
                 totalPages: (newObj[e.category]?.totalPages ?? 0) + e.pages,
