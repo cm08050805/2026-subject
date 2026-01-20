@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #login {
+            padding: 10px 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border-radius: 10px;
+            background-color: darksalmon;
+            text-decoration: none;
+        }
+
         #modal {
             position: fixed;
             top: 0;
@@ -37,15 +49,31 @@
             visibility: hidden;
             opacity: 0;
         }
+
+        .modal-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-main > span:nth-child(3) {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 <body>
-    <a href="#modal">로그인</a>
+    <a href="#modal" id="login">로그인</a>
 
     <div id="modal">
         <div class="modal-window">
             <a class="modal-close" href="#">X</a>
-            
+            <div class="modal-main">
+                <span>계정 로그인</span>
+                <span>안전한 서비스를 위해 로그인이 필요합니다.</span>
+                <span>계속하려면 아래에 등록된 이메일과 비밀번호를 입력해주세요.</span>
+                <span>로그인 계속</span>
+            </div>
         </div>
     </div>
 </body>

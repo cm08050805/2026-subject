@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input {
+            display: none;
+        }
+
+        label {
+            display: none;
+        }
+
+        header {
+            background-color: gray;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+        .menu>span {
+            padding: 1.2rem;
+            font-size: 1.6rem;
+        }
+
+        @media screen and (max-width:768px) {
+            header {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            }
+
+            label {
+                display: block;
+                margin-right: 12px;
+            }
+
+            .menu {
+                justify-content: space-around;
+            }
+
+            .menu>span {
+                visibility: hidden;
+                font-size: 1.4rem;
+            }
+
+            #hamburger:checked~.menu>span {
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="checkbox" id="hamburger">
+        <label for="hamburger">
+            <img src="./imgs/setting_icon.png" alt="hamburger">
+        </label>
+        <div class="menu">
+            <span>Home</span>
+            <span>About</span>
+            <span>Services</span>
+            <span>Contact</span>
+        </div>
+    </header>
+</body>
+
+</html>
