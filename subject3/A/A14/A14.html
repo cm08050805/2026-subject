@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .setting, .logout {
+            position: relative;
+        }
+
+        .tooltip {
+            padding: 10px;
+            position: absolute;
+            display: none;
+            border: 1px solid gray;
+            background-color: rgb(200, 200, 200);
+            white-space: nowrap;
+        }
+
+        .setting > .tooltip {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logout > .tooltip {
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 5px;
+        }
+
+        .setting:hover > .tooltip {
+            display: block;
+        }
+
+        .setting:focus > .tooltip {
+            display: block;
+        }
+
+        .logout:hover > .tooltip {
+            display: block;
+        }
+
+        .logout:focus > .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="setting" tabindex="0">
+            <span>설정</span>
+            <div class="tooltip">“설정” 버튼을 눌러 서비스를 설정할 수 있습니다.</div>
+        </div>
+        <div class="logout" tabindex="0">
+            <span>로그아웃</span>
+            <div class="tooltip">로그아웃되고 메인페이지로 이동합니다.</div>
+        </div>
+    </div>
+</body>
+</html>
