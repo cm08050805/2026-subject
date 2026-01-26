@@ -9,8 +9,7 @@
     <div id="custombox">Right-click me!</div>
 
     <script>
-        document.addEventListener("contextmenu", (e) => {
-            // if (e.target.id === "custombox") 
+        document.querySelector("#custombox").addEventListener("contextmenu", (e) => {
             console.log("Custom right-click action");
             e.preventDefault();
         });
