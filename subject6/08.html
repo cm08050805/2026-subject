@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+		<label for="todoInput">할 일: </label>
+		<input type="text" id="todoInput" />
+		<button id="addTodoBtn">추가</button>
+	</div>
+	<ul id="todoList">
+		<li>
+			<span>할 일 1</span>
+			<button>삭제</button>
+		</li>
+		<li>
+			<span>할 일 2</span>
+			<button>삭제</button>
+		</li>
+	</ul>
+
+    <script>
+        function addTodo() {
+            const input = document.querySelector("#todoInput");
+            
+            document.querySelector("#todoList").insertAdjacentHTML("beforeend", `
+                <li>
+                    <span>${input.value}</span>
+                    <button>삭제</button>
+                </li>
+            `);
+            input.value = "";
+        }
+
+        function deleteTodo(e) {
+            if (e.target.tagName !== "BUTTON") return;
+            document.querySelector("#todoList").removeChild(e.target.parentNode);
+        }
+
+        document.getElementById("addTodoBtn").addEventListener("click", addTodo);
+        document.getElementById("todoList").addEventListener("click", deleteTodo);
+    </script>
+</body>
+</html>

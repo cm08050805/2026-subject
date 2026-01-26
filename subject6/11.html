@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" onclick="clickEventHandler(event, 'container')" style="padding: 100px; background-color: black;">
+        <ul id="list" onclick="clickEventHandler(event, 'list')" style="padding: 100px; background-color: blue;">
+          <li id="item" onclick="clickEventHandler(event, 'item')">Click me!</li>
+        </ul>
+    </div>
+
+      <script>
+        function clickEventHandler(ev, eventTarget) {
+            if (eventTarget === "item") console.log(`Clicked: ${eventTarget}`);
+            if (ev.target.id === "list") ev.stopPropagation();
+            console.log(`Clicked: ${eventTarget}`);
+        }
+      </script>
+</body>
+</html>

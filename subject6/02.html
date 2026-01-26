@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+		<button id="changeBtn">텍스트 변경</button>
+		<div id="textContainer">Hello, World!</div>
+	</div>
+
+    <script>
+        function changeText() {
+            document.getElementById("textContainer").textContent = 'Hello, JavaScript!'
+        }
+
+        document.getElementById("changeBtn").addEventListener("click", changeText);
+    </script>
+</body>
+</html>

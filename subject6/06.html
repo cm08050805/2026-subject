@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonContainer">
+		<button data-color="red">Red</button>
+		<button data-color="green">Green</button>
+		<button data-color="blue">Blue</button>
+	</div>
+	<div id="coloredBox" style="width: 200px; height: 100px; background-color: white;"></div>
+
+    <script>
+        document.getElementById("buttonContainer").addEventListener("click", changeColor);
+
+        function changeColor(e) {
+            document.getElementById("coloredBox").style.backgroundColor = e.target.dataset.color;
+        }
+    </script>
+</body>
+</html>

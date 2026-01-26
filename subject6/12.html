@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" style="padding: 100px; background-color: black;">
+        <ul id="list" style="padding: 100px; background-color: blue;">
+          <li id="item">Click me!</li>
+        </ul>
+    </div>
+    
+    <script>
+        function clickCaptureEventHandler(e) {
+            console.log(`event capturing: ${e.currentTarget.id}`);
+        }
+
+        function clickBubbleEventHandler(e) {
+            console.log(`event capturing: ${e.currentTarget.id}`);
+        }
+
+        document.querySelector("#container").addEventListener("click", clickCaptureEventHandler, true);
+        document.querySelector("#list").addEventListener("click", clickCaptureEventHandler, true);
+        document.querySelector("#item").addEventListener("click", clickCaptureEventHandler, true);
+        document.querySelector("#container").addEventListener("click", clickBubbleEventHandler);
+        document.querySelector("#list").addEventListener("click", clickBubbleEventHandler);
+        document.querySelector("#item").addEventListener("click", clickBubbleEventHandler);
+    </script>
+</body>
+</html>

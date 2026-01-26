@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+		<button id="btn1">버튼 1</button>
+		<button id="btn2">버튼 2</button>
+		<button id="btn3">버튼 3</button>
+		<div id="displayArea"></div>
+	</div>
+
+    <script>
+        function onClick1() {
+            document.getElementById("displayArea").textContent = '버튼1 클릭';
+        }
+
+        function onClick2() {
+            document.getElementById("displayArea").textContent = '버튼2 클릭';
+        }
+
+        function onClick3() {
+            document.getElementById("displayArea").textContent = '버튼3 클릭';
+        }
+
+        document.getElementById("btn1").addEventListener("click", onClick1);
+        document.getElementById("btn2").addEventListener("click", onClick2);
+        document.getElementById("btn3").addEventListener("click", onClick3);
+    </script>
+</body>
+</html>

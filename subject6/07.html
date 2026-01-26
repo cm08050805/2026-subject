@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="tableContainer">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Gender</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Alice</td>
+					<td>Female</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Bob</td>
+					<td>Male</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="displayArea"></div>
+
+    <script>
+        document.getElementById("tableContainer").addEventListener("click", displayRowData);
+
+        function displayRowData(e) {
+            if (e.target.tagName !== "TD") return;
+			const parent = e.target.parentNode;
+			document.getElementById("displayArea").textContent = `${parent.children[0].textContent} ${parent.children[1].textContent} ${parent.children[2].textContent}`;
+        }
+    </script>
+</body>
+</html>

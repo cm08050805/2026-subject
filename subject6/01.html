@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="addBtn">추가</button>
+        <ul id="itemList">
+        </ul>
+    </div>
+
+    <script>
+        function addlistItem() {
+            const newLi = document.createElement("li");
+            const itemNum = document.querySelectorAll("li").length + 1;
+
+            newLi.textContent = `아이템 ${itemNum}`;
+            document.getElementById("itemList").appendChild(newLi);
+        }
+
+        document.getElementById("addBtn").addEventListener("click", addlistItem);
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+		<label for="numberInput">숫자 입력: </label>
+		<input type="text" id="numberInput" />
+		<button id="analyzeBtn">분석</button>
+		<div id="resultContainer"></div>
+	</div>
+
+    <script>
+        function analyzeNumber() {
+            const isEvenNum = document.getElementById("numberInput").value % 2 === 0;
+            console.log(isEvenNum);
+            if (isEvenNum) {
+                document.getElementById("resultContainer").textContent = '짝수';
+            } else {
+                document.getElementById("resultContainer").textContent = '홀수';
+            }
+        }
+
+        document.getElementById("analyzeBtn").addEventListener("click", analyzeNumber)
+    </script>
+</body>
+</html>
