@@ -14,7 +14,7 @@
 
       <script>
         function clickEventHandler(ev, eventTarget) {
-            if (eventTarget === "item") console.log(`Clicked: ${eventTarget}`);
+            if (ev.currentTarget.id === "item") console.log(`Clicked: ${eventTarget}`);
             if (ev.target.id === "list") ev.stopPropagation();
             console.log(`Clicked: ${eventTarget}`);
         }
