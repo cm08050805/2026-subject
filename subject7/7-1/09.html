@@ -53,7 +53,7 @@
         }
         
         async function getAllText3() {
-            return [await Promise.all([getText1(), getText2(), getText3()])];
+            return await Promise.all([getText1(), getText2(), getText3()]);
         }
 
         getAllText1().then((r) => {

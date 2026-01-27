@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const usersBudget = [100, 200, 500];
+        const productPrices = [50, 250, 400];
+
+        function canPurchase(price, budget) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (budget < price) {
+                    reject("못사용");
+                    return;
+                }
+                resolve("구매 ㄱㄱ");
+            }, 100);
+        });
+        }
+
+        function callCanPurchase1() {
+            canPurchase(productPrices[0], usersBudget[0])
+            .then(r => {
+                console.log(r);
+            });
+        }
+
+        async function callCanPurchase2() {
+            console.log(await canPurchase(productPrices[0], usersBudget[0]));
+        }
+
+        callCanPurchase1();
+        callCanPurchase2();
+    </script>
+</body>
+</html>
