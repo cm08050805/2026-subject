@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <button id="reset">재설정</button>
+    <button id="start">시작</button>
+
+    <div class="lap-area">
+        
+    </div>
+
+    <script>
+        function resetTimer() {
+            pauseTimer();
+            crrtime = 0;
+            savetime = 0;
+            renderTimer();
+        }
+
+        function startTimer() {
+            isRunning = true;
+            document.querySelector("#start").textContent = '중지';
+            document.querySelector("#reset").textContent = '랩';
+
+            timerId = setInterval(() => {
+                crrtime += 100;
+                renderTimer();
+            }, 100)
+        }
+
+        function pauseTimer() {
+            isRunning = false;
+            document.querySelector("#start").textContent = '시작';
+            document.querySelector("#reset").textContent = '재설정';
+
+            clearInterval(timerId);
+            timerId = null;
+        }
+
+        function lapTimer() {
+            let timeDiffer = crrtime - savetime;
+            const itemId = document.querySelectorAll(".lap-area > h2").length + 1;
+
+            document.querySelector(".lap-area").insertAdjacentHTML("afterbegin", `<h2>${itemId}&nbsp;${formatTime(timeDiffer)}&nbsp;${formatTime(crrtime)}</h2>`);
+
+            savetime = crrtime;
+        }
+        
+        function renderTimer() {
+            document.querySelector("#time").textContent = `${formatTime(crrtime)}`;
+        }
+
+        function formatTime(ms) {
+            const min = String(Math.floor(ms / 60000)).padStart(2, "0");
+            const sec = String(Math.floor((ms / 1000) % 60)).padStart(2, "0");
+            const msPart = Math.floor((ms % 1000) / 100);
+
+            return `${min}:${sec}.${msPart}`;
+        }
+
+        let crrtime = 0;
+        let savetime = 0;
+        let timerId = null;
+        let isRunning = false;
+        resetTimer();
+        document.querySelector("#start").addEventListener("click", () => {
+            isRunning?pauseTimer():startTimer();
+        });
+        document.querySelector("#reset").addEventListener("click", () => {
+            isRunning?lapTimer():resetTimer();
+        });
+    </script>
+</body>
+</html> 
