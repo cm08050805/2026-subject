@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getText1() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("Hello, ");
+                }, 1000);
+            });
+        }
+
+        function getText2() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("World! ");
+                }, 500);
+            });
+        }
+
+        function getText3() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("This is a test.");
+                }, 1500);
+            });
+        }
+
+        function getAllText1() {
+            let results = '';
+
+            return new Promise((res) => {
+                getText1().then(t1 => {
+                    results += t1;
+                    getText2().then(t2 => {
+                        results += t2;
+                        getText3().then(t3 => {
+                            results += t3;
+                            res(results);
+                        })
+                    })
+                })
+            })
+        }
+        
+        function getAllText2() {
+            return Promise.all([getText1(), getText2(), getText3()]);
+        }
+        
+        async function getAllText3() {
+            return [await Promise.all([getText1(), getText2(), getText3()])];
+        }
+
+        getAllText1().then((r) => {
+            console.log(r);
+        })
+
+        getAllText2().then((r) => {
+            console.log(r.join(""));
+        })
+
+        getAllText3().then((r) => {
+            console.log(r.join(""));
+        });
+    </script>
+</body>
+</html>

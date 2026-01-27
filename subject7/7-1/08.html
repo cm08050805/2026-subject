@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fetchData1() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("Data1");
+                }, 1000);
+            });
+        }
+
+        function fetchData2() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("Data2");
+                }, 500);
+            });
+        }
+
+        function fetchData3() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                resolve("Data3");
+                }, 1500);
+            });
+        }
+
+        function fetchAllData1() {
+            const results = [];
+
+            return Promise.all([
+                fetchData1().then(r => results.push(r)), 
+                fetchData2().then(r => results.push(r)), 
+                fetchData3().then(r => results.push(r))
+            ]).then(() => {
+                return results;
+            });
+        }
+
+        async function fetchAllData2() {
+            const results = [];
+
+            await Promise.all([
+                fetchData1().then(r => results.push(r)), 
+                fetchData2().then(r => results.push(r)), 
+                fetchData3().then(r => results.push(r))
+            ]);
+            
+            return results;
+        }
+
+        fetchAllData1()
+        .then(result => {
+            console.log(result);
+        })
+        fetchAllData2()
+        .then(result => {
+            console.log(result);
+        })
+    </script>
+</body>
+</html>
