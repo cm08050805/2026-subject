@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <input id="img-input" type="file" accept="image/*">
+    <div class="preview"></div>
+
+    <script>
+        document.querySelector("#img-input").addEventListener("change", (e) => {
+            const file = e.target.files[0];
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+                document.querySelector(".preview").innerHTML = `<img src="${reader.result}" alt="">`;
+            };
+        });
+    </script>
 </body>
 </html>

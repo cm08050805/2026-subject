@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkFileSize(file, maxSize) {
+            return file.size <= maxSize;
+        }
+
+        // 사용 예시
+        const file1 = new File(["Hello World!"], "example.txt", {type: "text/plain"});
+        console.log(checkFileSize(file1, 50)); // true 출력
+
+        const file2 = new File(["This is a very long content"], "example.txt", {type: "text/plain"});
+        console.log(checkFileSize(file2, 10)); // false 출력
+    </script>
+</body>
+</html>
