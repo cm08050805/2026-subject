@@ -1,0 +1,26 @@
+.jumbotron {
+	background-image: url(../images/header-bg.jpg);
+	background-size: cover;
+	text-align: center;
+}
+
+.btns {
+	text-align: right;
+}
+
+.writebtn {
+	margin: 0 0 30px 0;
+}
+
+.list-img {
+	margin: 0 10px 0 0;
+}
+
+.footer { 
+	text-align: center;
+}
+
+.categories ul li, .authors ul li{
+	font-size: 18px;
+}
+
