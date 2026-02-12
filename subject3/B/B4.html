@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .timer {
+            width: 100px;
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer">
+        
+    </div>
+
+    <script>
+        const curtime = new Date();
+        const hour = curtime.getHours();
+        const min = curtime.getMinutes();
+        const sec = curtime.getSeconds();
+
+        document.querySelector(".timer").textContent = `${hour}:${min}:${sec}`;
+
+        setInterval(() => {
+            const curtime = new Date();
+            const hour = curtime.getHours();
+            const min = curtime.getMinutes();
+            const sec = curtime.getSeconds();
+
+            document.querySelector(".timer").textContent = `${hour}:${min}:${sec}`;
+        }, 1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        const box = document.querySelector(".box");
+
+        let x = (window.innerWidth - box.offsetWidth) / 2;
+        let y = (window.innerHeight - box.offsetHeight) / 2;
+
+        box.style.left = x + "px";
+        box.style.top = y + "px";
+
+        document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp") y -= 10;
+        if (e.key === "ArrowDown") y += 10;
+        if (e.key === "ArrowLeft") x -= 10;
+        if (e.key === "ArrowRight") x += 10;
+
+        x = Math.max(0, Math.min(x, window.innerWidth - box.offsetWidth));
+        y = Math.max(0, Math.min(y, window.innerHeight - box.offsetHeight));
+
+        box.style.left = x + "px";
+        box.style.top = y + "px";
+    });
+    </script>
+</body>
+</html>

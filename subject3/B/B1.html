@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:focus {
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    비밀번호 <input type="password" id="pwinp">
+
+    <script>
+        const passwordInput = document.getElementById("pwinp");
+
+        const normalRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+        const strongRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+
+        passwordInput.addEventListener("input", () => {
+            const value = passwordInput.value;
+
+            if (strongRegex.test(value)) {
+                passwordInput.style.borderColor = "green";
+            } else if (normalRegex.test(value)) {
+                passwordInput.style.borderColor = "orange";
+            } else {
+                passwordInput.style.borderColor = "red";
+            }
+        });
+    </script>
+</body>
+</html>

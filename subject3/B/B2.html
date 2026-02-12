@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 230px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .todo-list {
+            width: 100%;
+        }
+
+        .todo-list > div {
+            width: 100%;
+            padding: 10px;
+            background-color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>To-Do 리스트</h2>
+        <div class="input-area">
+            <input type="text" class="todo-input" placeholder="할 일을 입력하세요">
+            <button class="add-btn">추가</button>
+        </div>
+        <div class="todo-list">
+            <div>
+                간단한 할일 1
+                <button class="remove">삭제</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".container").addEventListener("click", (e) => {
+            if (e.target.classList.contains("remove")) {
+                document.querySelector(".todo-list").removeChild(e.target.parentNode);
+            }
+
+            if (e.target.classList.contains("add-btn")) {
+                const todoInput = document.querySelector(".todo-input");
+                if (todoInput.value.trim()) {
+                    document.querySelector(".todo-list").insertAdjacentHTML("beforeend", `
+                        <div>
+                            <span>${todoInput.value}</span>
+                            <button class="remove">삭제</button>
+                        </div>
+                    `);
+
+                    todoInput.value = "";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

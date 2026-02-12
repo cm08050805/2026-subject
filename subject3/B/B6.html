@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .drag-area {
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag-area">
+        이미지를 여기에 드랍하세요
+    </div>
+    <button class="reset">초기화</button>
+
+    <script>
+        const dragArea = document.querySelector(".drag-area");
+
+        dragArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+        });
+
+        dragArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            
+            const file = e.dataTransfer.files[0];
+
+            if (!file || !file.type.startsWith("image/")) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                console.log(event);
+                dragArea.innerHTML = `<img src="${event.target.result}" alt="drop-pic" style="width:100%; height:100%">`;
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        document.querySelector(".reset").addEventListener("click", () => {
+            document.querySelector(".drag-area").innerHTML = "이미지를 여기에 드랍하세요";
+        });
+    </script>
+</body>
+</html>
