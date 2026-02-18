@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="time">00:00:000</h1>
+
+    <button id="start">시작</button>
+    <button id="pause" style="display:none;">중지</button>
+    <button id="resume" style="display:none;">계속</button>
+    <button id="reset">초기화</button>
+
+    <script>
+        let currentTime = 0;
+        let timerId = null;
+
+        const startBtn = document.getElementById("start");
+        const pauseBtn = document.getElementById("pause");
+        const resumeBtn = document.getElementById("resume");
+        const resetBtn = document.getElementById("reset");
+
+        function formatTime(ms) {
+            const min = String(Math.floor(ms / 60000)).padStart(2, "0");
+            const sec = String(Math.floor((ms / 1000) % 60)).padStart(2, "0");
+            const milli = String(ms % 1000).padStart(3, "0");
+            return `${min}:${sec}:${milli}`;
+        }
+
+        function render() {
+            document.getElementById("time").textContent = formatTime(currentTime);
+        }
+
+        function start() {
+            timerId = setInterval(() => {
+                currentTime += 10;
+                render();
+            }, 10);
+
+            startBtn.style.display = "none";
+            pauseBtn.style.display = "inline";
+        }
+
+        function pause() {
+            clearInterval(timerId);
+            timerId = null;
+
+            pauseBtn.style.display = "none";
+            resumeBtn.style.display = "inline";
+        }
+
+        function resume() {
+            timerId = setInterval(() => {
+                currentTime += 10;
+                render();
+            }, 10);
+
+            resumeBtn.style.display = "none";
+            pauseBtn.style.display = "inline";
+        }
+
+        function reset() {
+            clearInterval(timerId);
+            timerId = null;
+            currentTime = 0;
+            render();
+
+            startBtn.style.display = "inline";
+            pauseBtn.style.display = "none";
+            resumeBtn.style.display = "none";
+        }
+
+        startBtn.addEventListener("click", start);
+        pauseBtn.addEventListener("click", pause);
+        resumeBtn.addEventListener("click", resume);
+        resetBtn.addEventListener("click", reset);
+
+        render();
+    </script>
+</body>
+</html> 

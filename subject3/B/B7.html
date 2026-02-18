@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inputs">
+            <input type="text" class="number-input">
+            <input type="text" class="number-input">
+            <input type="text" class="number-input">
+            <input type="text" class="number-input">
+            <input type="text" class="number-input">
+            <input type="text" class="number-input">
+        </div>
+        <button class="submit" disabled>전송하기</button>
+    </div>
+
+    <script>
+        document.querySelector(".inputs").addEventListener("input", (e) => {
+            const value = e.target.value.slice(-1);
+            const regex = /^[0-9]$/;
+
+            if (regex.test(value)) {
+                e.target.value = value;
+
+                if (e.target.nextElementSibling) {
+                    e.target.nextElementSibling.focus();
+                } else {
+                    e.target.blur();
+                }
+            } else {
+                e.target.value = "";
+            }
+
+            const inputs = document.querySelectorAll(".number-input");
+            const isEmpty = [...inputs].some(input => input.value.trim() === "");
+
+            console.log(isEmpty);
+
+            document.querySelector(".submit").disabled = isEmpty;
+        });
+    </script>
+</body>
+</html>

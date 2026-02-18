@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h2 {
+            margin: auto;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .item-list > div {
+            width: 90%;
+            margin: auto;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>즐겨찾기 목록</h2>
+        <div class="item-list">
+
+        </div>
+    </div>
+
+    <script>
+        let itemData = [];     
+        let favorites = JSON.parse(localStorage.getItem("favorite")) || [];
+
+        async function loadData() {
+            const res = await fetch("data.json");  
+            itemData = await res.json();
+            console.log(itemData);
+            render();
+        }
+
+        function render() {
+            const list = document.querySelector(".item-list");
+            list.innerHTML = "";
+
+            itemData.forEach((e) => {
+                list.innerHTML += `
+                    <div data-id="${e.id}">
+                        <div class="text-area">
+                            <div class="name">${e.name}</div>
+                            <div class="desc">${e.desc}</div>
+                        </div>
+                        <div class="favorite">
+                            ${favorites.includes(e.id) ? "★" : "☆"}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        document.querySelector(".container").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("favorite")) return;
+
+            const id = Number(e.target.parentNode.dataset.id);
+
+            favorites = favorites.includes(id)?favorites.filter(f => f !== id):[...favorites, id];
+
+            localStorage.setItem("favorite", JSON.stringify(favorites));
+            render();
+        });
+
+        loadData();
+    </script>
+</body>
+</html>

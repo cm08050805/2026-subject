@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .message {
+            width: 300px;
+            height: 200px;
+            background-color: gray;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="success">성공</button>
+    <button class="fail">실패</button>
+    <div class="message-area">
+
+    </div>
+
+    <script>
+        function addMessage(type) {
+            const message = document.createElement("div");
+            message.classList.add("message");
+
+            if (type === "success") {
+                message.textContent = "성공하였습니다";
+                message.style.backgroundColor = "#2ecc71";
+            } else {
+                message.textContent = "실패하였습니다";
+                message.style.backgroundColor = "#ff6b9d";
+            }
+
+            document.querySelector(".message-area").appendChild(message);
+
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        }
+
+        document.querySelector(".success").addEventListener("click", () => addMessage("success"));
+        document.querySelector(".fail").addEventListener("click", () => addMessage("fail"));
+        document.querySelector(".message-area").addEventListener("click", (e) => {
+            if (e.target.classList.contains("message")) {
+                e.target.remove();
+            }
+        });
+    </script>
+</body>
+</html>

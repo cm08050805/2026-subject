@@ -30,17 +30,17 @@
         box.style.top = y + "px";
 
         document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowUp") y -= 10;
-        if (e.key === "ArrowDown") y += 10;
-        if (e.key === "ArrowLeft") x -= 10;
-        if (e.key === "ArrowRight") x += 10;
+            if (e.key === "ArrowUp") y -= 10;
+            if (e.key === "ArrowDown") y += 10;
+            if (e.key === "ArrowLeft") x -= 10;
+            if (e.key === "ArrowRight") x += 10;
 
-        x = Math.max(0, Math.min(x, window.innerWidth - box.offsetWidth));
-        y = Math.max(0, Math.min(y, window.innerHeight - box.offsetHeight));
+            x = Math.max(0, Math.min(x, window.innerWidth - box.offsetWidth));
+            y = Math.max(0, Math.min(y, window.innerHeight - box.offsetHeight));
 
-        box.style.left = x + "px";
-        box.style.top = y + "px";
-    });
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+        });
     </script>
 </body>
 </html>
