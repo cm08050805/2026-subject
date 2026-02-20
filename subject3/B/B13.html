@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video src="test-video.mp4"></video>
+    <br>
+
+    <div>
+        <span id="current">00:00</span> /
+        <span id="duration">00:00</span>
+    </div>
+
+    <button class="pause">일시정지/재생</button>
+    <button class="back">10초 되감기</button>
+    <button class="forward">10초 빨리감기</button>
+    <button class="mute">소리 음소거/음소거 해제</button>
+
+    <script>
+        const video = document.querySelector("video");
+
+        function formatTime(sec) {
+            const m = String(Math.floor(sec / 60)).padStart(2, "0");
+            const s = String(Math.floor(sec % 60)).padStart(2, "0");
+            return `${m}:${s}`;
+        }
+
+        video.addEventListener("loadedmetadata", () => {
+            document.querySelector("#duration").textContent = formatTime(video.duration);
+        });
+
+        video.addEventListener("timeupdate", () => {
+            document.querySelector("#current").textContent = formatTime(video.currentTime);
+        });
+
+        document.querySelector(".pause").addEventListener("click", () => {
+            video.paused ? video.play() : video.pause();
+        });
+
+        document.querySelector(".back").addEventListener("click", () => {
+            video.currentTime = Math.max(0, video.currentTime - 10);
+        });
+
+        document.querySelector(".forward").addEventListener("click", () => {
+            video.currentTime = Math.min(video.duration, video.currentTime + 10);
+        });
+
+        document.querySelector(".mute").addEventListener("click", () => {
+            video.muted = !video.muted;
+        });
+    </script>
+</body>
+</html>

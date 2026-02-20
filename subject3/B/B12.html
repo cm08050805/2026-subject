@@ -7,7 +7,7 @@
 </head>
 <body>
     <input id="img-input" type="file" accept="image/*">
-    <div class="preview"></div>
+    <div class="preview"></div> 
     <button data-filter="grayscale(100%)">흑백</button>
     <button data-filter="sepia(100%)">세피아</button>
     <button data-filter="invert(100%)">반전</button>
@@ -17,7 +17,6 @@
 
     <script>
         const input = document.getElementById("img-input");
-        const preview = document.querySelector(".preview");
 
         let currentImg = null;
 
@@ -29,7 +28,7 @@
             reader.readAsDataURL(file);
 
             reader.onload = () => {
-                preview.innerHTML = `<img id="preview-img" src="${reader.result}">`;
+                document.querySelector(".preview").innerHTML = `<img id="preview-img" src="${reader.result}">`;
                 currentImg = document.getElementById("preview-img");
             };
         });
