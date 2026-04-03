@@ -35,8 +35,20 @@
             if (e.key === "ArrowLeft") x -= 10;
             if (e.key === "ArrowRight") x += 10;
 
-            x = Math.max(0, Math.min(x, window.innerWidth - box.offsetWidth));
-            y = Math.max(0, Math.min(y, window.innerHeight - box.offsetHeight));
+            if (x > window.innerWidth - box.offsetWidth) {
+                x = window.innerWidth - box.offsetWidth;
+            }
+            if (x < 0) {
+                x = 0;
+            }
+            if (y > window.innerHeight - box.offsetHeight) {
+                y = window.innerHeight - box.offsetHeight;
+            }
+            if (y < 0) {
+                y = 0;
+            }
+            // x = Math.max(0, Math.min(x, window.innerWidth - box.offsetWidth));
+            // y = Math.max(0, Math.min(y, window.innerHeight - box.offsetHeight));
 
             box.style.left = x + "px";
             box.style.top = y + "px";

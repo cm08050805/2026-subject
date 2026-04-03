@@ -16,15 +16,15 @@
     <script>
         const passwordInput = document.getElementById("pwinp");
 
-        const normalRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
-        const strongRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+        const normalRegex = /^(?=.*[A-Z])(?=.*\d)/;
+        const strongRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])/;
 
         passwordInput.addEventListener("input", () => {
             const value = passwordInput.value;
 
-            if (strongRegex.test(value)) {
+            if (value.length >= 8 && strongRegex.test(value)) {
                 passwordInput.style.borderColor = "green";
-            } else if (normalRegex.test(value)) {
+            } else if (value.length >= 6 && normalRegex.test(value)) {
                 passwordInput.style.borderColor = "orange";
             } else {
                 passwordInput.style.borderColor = "red";
