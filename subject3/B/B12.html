@@ -13,12 +13,8 @@
     <button data-filter="invert(100%)">반전</button>
     <button data-filter="none">원본</button>
 
-    <div class="preview"></div>
-
     <script>
         const input = document.getElementById("img-input");
-
-        let currentImg = null;
 
         input.addEventListener("change", (e) => {
             const file = e.target.files[0];
@@ -29,15 +25,16 @@
 
             reader.onload = () => {
                 document.querySelector(".preview").innerHTML = `<img id="preview-img" src="${reader.result}">`;
-                currentImg = document.getElementById("preview-img");
             };
         });
 
         document.addEventListener("click", (e) => {
             if (!e.target.dataset.filter) return;
-            if (!currentImg) return;
 
-            currentImg.style.filter = e.target.dataset.filter;
+            const img = document.getElementById("preview-img");
+            if (!img) return;
+
+            img.style.filter = e.target.dataset.filter;
         });
     </script>
 </body>
